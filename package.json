@@ -1,0 +1,26 @@
+{
+  "name": "election-results-reporting",
+  "private": true,
+  "scripts": {
+    "build": "yarn --cwd client install && yarn --cwd client build",
+    "heroku-postbuild": "yarn build"
+  },
+  "lint-staged": {
+    "*.+(css|graphql|json|less|md|mdx|sass|scss|yaml|yml)": [
+      "prettier --write"
+    ],
+    "*.py": [
+      "poetry run black",
+      "poetry run pylint -j 0"
+    ],
+    "package.json": [
+      "sort-package-json"
+    ]
+  },
+  "devDependencies": {
+    "husky": "4",
+    "lint-staged": "^10.2.2",
+    "prettier": "^1.19.1",
+    "sort-package-json": "^1.40.0"
+  }
+}
